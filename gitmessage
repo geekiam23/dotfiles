@@ -1,8 +1,14 @@
+Why:
 
+*
+
+This change addresses the need by:
+
+*
 
 # 50-character subject line
 #
-# 72-character wrapped longer description. This should answer:
+# 72-character wrapped longer description.This should answer:
 #
 # * Why was this change necessary?
 # * How does it address the problem?
@@ -10,7 +16,15 @@
 #
 # Include a link to the ticket, if any.
 #
-# Add co-authors if you worked on this code with others:
+
+#EXAMPLE:
+#Redirect user to the requested page after login
 #
-# Co-authored-by: Full Name <email@example.com>
-# Co-authored-by: Full Name <email@example.com>
+#https://trello.com/path/to/relevant/card
+#
+#Users were being redirected to the home page after login, which is less
+#useful than redirecting to the page they had originally requested before
+#being redirected to the login form.
+#
+#* Store requested path in a session variable
+#* Redirect to the stored location after successfully logging in the user

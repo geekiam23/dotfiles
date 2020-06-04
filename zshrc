@@ -1,3 +1,5 @@
+ZSH_THEME="robbyrussell"
+
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
@@ -38,4 +40,16 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.aliases ]] && source ~/.aliases && source ~/dotfiles-local/aliases.local  
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+eval "$(rbenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

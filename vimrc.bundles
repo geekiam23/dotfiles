@@ -25,29 +25,64 @@ else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 
-Plug 'junegunn/fzf.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'janko-m/vim-test'
-Plug 'pangloss/vim-javascript'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/tComment'
+"if has('nvim')
+  "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/denite.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 
-if g:has_async
-  Plug 'dense-analysis/ale'
-endif
+Plug 'mileszs/ack.vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'davidyorr/vim-es6-unused-imports'
+Plug 'Yggdroot/indentLine'
+Plug 'rpope/vim-repeat'
+"Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-bundler'
+"Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rake'
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'nvie/vim-flake8'
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+"Plug 'maximbaz/lightline-ale'
+Plug 'vim-scripts/mru.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-fugitive'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/vim-gist'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'digitaltoad/vim-pug'
+Plug 'vim-ruby/vim-ruby'
+Plug 'honza/vim-snippets'
+Plug 'janko-m/vim-test'
+Plug 'maxbrunsfeld/vim-yankstack'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdtree'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+Plug 'scrooloose/nerdcommenter'
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+
+"if g:has_async
+  "Plug 'dense-analysis/ale'
+"endif
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

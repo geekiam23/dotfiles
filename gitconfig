@@ -1,29 +1,61 @@
-[init]
-  templatedir = ~/.git_template
+[user]
+	name = Will Larry
+	email = will23larry@gmail.com
+
 [push]
-  default = current
-[color]
-  ui = auto
+	default = simple
+
 [alias]
-  aa = add --all
-  ap = add --patch
-  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-  ci = commit -v
-  co = checkout
-  pf = push --force-with-lease
   st = status
+  ci = commit
+  co = checkout
+  cor = checkout --track
+  cob = checkout -b
+  clo = clone 
+  cm = !git add -A && git commit -m
+  cl = !git add . && git stash && git st
+  fu = reset --hard
+  sa = submodule add
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  sb = shortlog -s -n --all
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+  sa = submodule add
+  sb = shortlog -s -n --all
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  yep = !git pull --rebase && git remote prune origin
+  yolo = push --force
+  scout = !git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))' 
+  master = checkout mainline
+  m = checkout master
+  standup = !git lg --since='yesterday' --author=`git config user.email`
+  su = !git standup
+  pr = !hub pull-request
+  expunge = !git branch --merged mainline | grep -v 'mainline$' | xargs git branch -d 
+  done = "!f() { git co -b $1 && git add . --all && git commit -m $2 && git push -u origin $1 && hub pull-request -m $2; }; f"
+  accept-ours = "!f() { files=\"$@\"; [ -z $files ] && files='.'; git checkout --ours -- $files; git add -u $files; }; f"
+  accept-theirs = "!f() { files=\"$@\"; [ -z $files ] && files='.'; git checkout --theirs -- $files; git add -u $files; }; f"
+  squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+  up = !git pull --rebase --prune 
+  uncommit = reset --soft HEAD~1
+
 [core]
-  excludesfile = ~/.gitignore
-  autocrlf = input
-[merge]
-  ff = only
+	editor = nvim
+	excludesfile = /Users/willlarry/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [commit]
-  template = ~/.gitmessage
-[fetch]
-  prune = true
-[rebase]
-  autosquash = true
-[include]
-  path = ~/.gitconfig.local
-[diff]
-  colorMoved = zebra
+	template = /Users/willlarry/.gitmessage.txt
